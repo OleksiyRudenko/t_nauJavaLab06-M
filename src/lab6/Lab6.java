@@ -31,7 +31,30 @@ public class Lab6 {
     //    или касаются, или не имеют общих точек.
         
         
-        
+    String str="ava";
+    char ch=0x74;
+    str=ch+str;
+    System.out.println(str); // why not Java but tava?
+    
+    // make abstract class Figure, collect figures there, 
+    // static method findDistance, 
+    // static abstract method String identity() - 
+    // static method traversePairs(method,types...)
+    // returns [pair,result of method]
+    
+    
+    new Circle();    
+    
+    for (int i=0;i<10;i++) new Circle();
+    // put few tangent test objects
+    new Circle(10,10,10);
+    new Circle(30,10,10);
+    new Circle(30,30,10);
+    
+    System.out.print(Circle.dumpAll());
+    
+ 
+    
 
     }
     
