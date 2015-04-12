@@ -4,74 +4,57 @@
  * and open the template in the editor.
  */
 package lab6;
-import java.util.*;
+import java.util.ArrayList;
 
 
 /**
  *
  * @author oleksiy.rudenko@gmail.com
  */
-public class Circle {
+public class Circle extends Figure {
     private static int 
-            Xmin=-100, 
-            Xmax=100, 
-            Ymin=-100, 
-            Ymax=100, 
             Rmin=10, 
             Rmax=25;
     private static ArrayList<Circle> All=new ArrayList<Circle>();
-    static { // used to initialize static fields
-        
-    }
-    { } // called before constructor for each new object
-    private int x, y, r;
-    
+    private int r;
+     
     public Circle() { // generate random values
-        setX((int)(Xmin+Math.random()*(Xmax-Xmin)));
-        setY((int)(Ymin+Math.random()*(Ymax-Ymin)));
+        super();
         setR((int)(Rmin+Math.random()*(Rmax-Rmin)));
         All.add(this);
     }
     
     public Circle(int x, int y, int r) {
-        setX(x); setY(y); setR(r);
+        super(x,y);
+        setR(r);
         All.add(this);
     }
     
     public static String dumpAll() {
         StringBuilder sb=new StringBuilder();
-        
         for (Circle c : All) {
-            sb.append(String.format("(% 3d,% 3d)[%3d]%n",c.x,c.y,c.r));
+            sb.append(String.format("(% 3d,% 3d)[%3d]%n",c.getX(),c.getY(),c.r));
         }
-        
-        buildRmx();
-        
         return sb.toString();
     }
     
-    public static void buildRmx() { // build semi-matrix of relations between circles
-        // 0 - touch
+    public static void buildRmx(String function) { // build semi-matrix of relations between circles
+        for (int i=0;i<All.size()-1;i++)
+            for (int j=i+1;j<All.size();j++)
+                // function();
+                All.get(i).relationIntersection(All.get(j));
+    }
+    
+    public int relationIntersection(Circle a) {
+        // =0 - touch
         // >0 - no intersection
         // <0 - intersect
         
-    }
 
-    public int getX() {
-        return x;
+        return 0;
     }
+    
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public int getR() {
         return r;

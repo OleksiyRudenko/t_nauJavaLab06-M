@@ -53,6 +53,7 @@ public class Lab6 {
     
     System.out.print(Circle.dumpAll());
     
+    Circle.buildRmx("relationIntersection");
  
     
 
