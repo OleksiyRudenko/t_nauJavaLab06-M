@@ -34,7 +34,7 @@ public class Lab6 {
     String str="ava";
     char ch=0x74;
     str=ch+str;
-    System.out.println(str); // why not Java but tava?
+    System.out.println("0x74+\"ava\"="+str+" - Why not Java???"); // why not Java but tava?
     
     // make abstract class Figure, collect figures there, 
     // static method findDistance, 
@@ -42,19 +42,43 @@ public class Lab6 {
     // static method traversePairs(method,types...)
     // returns [pair,result of method]
     
-    
-    new Circle();    
-    
-    for (int i=0;i<10;i++) new Circle();
+    for (int i=0;i<5;i++) new Circle();
     // put few tangent test objects
     new Circle(10,10,10);
     new Circle(30,10,10);
     new Circle(30,30,10);
+
+    FigurePair fpa[]=Circle.getRelationArray("relationIntersection");
     
-    System.out.print(Circle.dumpAll());
+    System.out.println("Circle relations:");
     
-    Circle.buildRmx("relationIntersection");
+    for (FigurePair fp : fpa)
+        System.out.println(fp.get1().dump() + " R " +
+                fp.get2().dump() + " = " +
+                String.format("% 9.06f -- %s",
+                        fp.getRelation(),
+                        (fp.getRelation()==0.0)?"tangent":
+                                (fp.getRelation()>0.0)?"intersect":
+                                        "no intersection"
+                    ));
+    
+   
+    // === supplementary tests
+    /*
+    new Figure();
+    
+    new Figurette();
+    new Figurette();
+    
+    
+    System.out.println("All figures:\n"+Figure.dumpAll());
+    System.out.println("All circles:\n"+Circle.dumpAll());
+    System.out.println("All figurettes:\n"+Figurette.dumpAll());
+    
+    */
  
+    // Circle c=new Circle(30,30,10);
+    
     
 
     }

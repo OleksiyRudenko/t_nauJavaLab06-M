@@ -32,10 +32,14 @@ public class Figure {
         All.add(this);
     }
     
+    public String dump() {
+        return String.format("(% 3d,% 3d) %s",getX(),getY(),getClass().getName());
+    }
+    
     public static String dumpAll() {
         StringBuilder sb=new StringBuilder();
         for (Figure f : All) {
-            sb.append(String.format("(% 3d,% 3d)%n",f.getX(),f.getY()));
+            sb.append(f.dump()+String.format("%n"));
         }
         return sb.toString();
     }

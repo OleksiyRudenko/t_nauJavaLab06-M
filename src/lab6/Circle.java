@@ -30,31 +30,39 @@ public class Circle extends Figure {
         All.add(this);
     }
     
+    public String dump() {
+        return String.format("(% 3d,% 3d) %s r=%3d",getX(),getY(),getClass().getName(),r);
+    }
+    
     public static String dumpAll() {
         StringBuilder sb=new StringBuilder();
-        for (Circle c : All) {
-            sb.append(String.format("(% 3d,% 3d)[%3d]%n",c.getX(),c.getY(),c.r));
+        for (Circle f : All) {
+            sb.append(f.dump()+String.format("%n"));
         }
         return sb.toString();
     }
     
-    public static void buildRmx(String function) { // build semi-matrix of relations between circles
+    public static FigurePair [] getRelationArray(String function) { // build semi-matrix of relations between circles
+        FigurePair fp[]=new FigurePair[(All.size()*All.size()-All.size())/2];
+        int fpcount=0;
         for (int i=0;i<All.size()-1;i++)
             for (int j=i+1;j<All.size();j++)
                 // function();
-                All.get(i).relationIntersection(All.get(j));
-    }
-    
-    public int relationIntersection(Circle a) {
-        // =0 - touch
-        // >0 - no intersection
-        // <0 - intersect
+                
+                // see p.381 of Schildt
+                fp[fpcount++]=new FigurePair(All.get(i),All.get(j),All.get(i)::func relationIntersection(All.get(j)));
         
-
-        return 0;
+        return fp;
     }
     
-
+    public double relationIntersection(Circle c) {
+        // =0 - touch
+        // <0 - no intersection
+        // >0 - intersect
+        double  vx=Math.abs(getX()-c.getX()),
+                vy=Math.abs(getY()-c.getY());
+        return (r+c.r)-Math.sqrt(vx*vx+vy*vy);
+    }
 
     public int getR() {
         return r;

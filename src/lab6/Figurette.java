@@ -25,13 +25,13 @@ public class Figurette extends Figure {
         super(x,y);
         All.add(this);
     }
-    
+     
     public static String dumpAll() {
         StringBuilder sb=new StringBuilder();
-        for (Figurette c : All) {
-            sb.append(String.format("(% 3d,% 3d)%n",c.getX(),c.getY()));
+        for (Figure f : All) {
+            sb.append(f.dump()+String.format("%n"));
         }
         return sb.toString();
     }
-    
+
 }
