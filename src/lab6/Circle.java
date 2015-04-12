@@ -50,8 +50,11 @@ public class Circle extends Figure {
                 // function();
                 
                 // see p.381 of Schildt
-                fp[fpcount++]=new FigurePair(All.get(i),All.get(j),All.get(i)::func relationIntersection(All.get(j)));
-        
+                fp[fpcount++]=new FigurePair(
+                        All.get(i),
+                        All.get(j),
+                        All.get(i).relationIntersection(All.get(j))
+                    );
         return fp;
     }
     

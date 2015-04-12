@@ -5,6 +5,11 @@
  */
 package lab6;
 
+
+interface Ii {
+    int func(int a, int b);
+}
+
 /**
  *
  * @author oleksiy.rudenko@gmail.com
@@ -15,6 +20,10 @@ public class Lab6 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Ii oi;
+        oi= (n,m) -> n+m;
+        oi.func(5,6);
+        
         // Lab 6
     //    Обработка наборов данных на языке Java2 
     //    (коллекции: списки, множества, карты отображения)
